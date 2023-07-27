@@ -47,6 +47,9 @@ Route::view('/home', 'home', ['name' => 'Munna']);
 //     return 'User = ' . $name;
 // })->whereIn('name', ['munna','masud']);
 
-Route::get('/user/{id}', function (string $id) {
-    return 'User = ' . $id;
-});
+Route::get('/user/{id}', function (Request $request,string $id) {
+    if ($request->route()->named('user')) {
+        return 'User = ' . $id . $_GET['name'] . 'Yes This is named route';
+    } 
+    
+})->name('user');
