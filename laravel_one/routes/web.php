@@ -19,7 +19,7 @@ use App\Models\Post;
 
 Route::get('/', function () {
     return view('welcome');
-})->name('wel');
+})  ;
 // Route::redirect('/','/home',392);
 // Route::get('/home', function () {
 //     return view('home');
@@ -27,11 +27,11 @@ Route::get('/', function () {
 // Route::match(['post', 'put'], '/data', function (Request $data) {
 //     return $data;
 // })->name('data');
-Route::any('/data', function (Request $request) {
-    return print_r($request);
-})->name('data');
+// Route::any('/data', function (Request $request) {
+//     return print_r($request);
+// })->name('data');
 
-Route::view('/home', 'home', ['name' => 'Munna']);
+// Route::view('/home', 'home', ['name' => 'Munna']);
 
 // Route::get('/user/{id}', function (string $id) {
 //     return 'user = ' . $id;
@@ -77,8 +77,19 @@ Route::view('/home', 'home', ['name' => 'Munna']);
 //     return $post;
 // });
 
-Route::get('/user/{user}', [OneController::class, 'show'])
-                        ->missing(function (Request $request) {
+// Route::get('/user/{user}', [OneController::class, 'show'])
+//                         ->missing(function (Request $request) {
 
-                            return Redirect::route('data');
-                        });
+//                             return Redirect::route('data');
+//                         });
+
+
+// Route::get('/user/{user}', [OneController::class, 'show']);
+Route::get('/user/{user}', [OneController::class, 'show']);
+
+Route::fallback(function () {
+    return 'ball';
+});
+
+
+
