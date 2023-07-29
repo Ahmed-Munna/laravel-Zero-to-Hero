@@ -5,7 +5,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\OneController;
 use App\Models\User;
 use App\Models\Post;
-
+use App\Http\Middleware\userMiddleware;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -85,7 +85,14 @@ Route::get('/', function () {
 
 
 // Route::get('/user/{user}', [OneController::class, 'show']);
-Route::get('/user/{user}', [OneController::class, 'show']);
+// Route::get('/user/{user}', [OneController::class, 'show']);
+Route::get('/user', [OneController::class, 'show']);
+// Route::get('/user/data', [OneController::class, 'data'])
+//                             ->name('data')
+//                             ->middleware(userMiddleware::class);
+Route::get('/user/data', [OneController::class, 'data'])
+                            ->name('data')
+                            ->middleware('user');
 
 Route::fallback(function () {
     return 'ball';

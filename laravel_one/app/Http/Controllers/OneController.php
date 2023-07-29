@@ -17,8 +17,17 @@ class OneController extends Controller
     //     return $category->value;
     // }
 
-    public function show (User $user) {
-        return $user->name;
+    // public function show (User $user) {
+    //     return $user->name;
+    // }
+
+    public function show () {
+        return view('home');
+    }
+
+    public function data(Request $request) {
+        $data = $request->all();
+        return view('data', compact('data'));
     }
 
 }
