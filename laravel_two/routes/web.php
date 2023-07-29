@@ -20,4 +20,9 @@ Route::get('/', function () {
 });
 
 // Route::get('/{user}', ExampleController::class);
-Route::resource('exam', ExamController::class);
+// Route::resource('user', ExamController::class)
+//                ->missing(function (Request $request) {
+//                 return 'SHAWUA';
+//                } );
+
+Route::singleton('user', ExamController::class);
