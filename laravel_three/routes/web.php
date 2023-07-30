@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\View;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +16,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('addUser');
+    // return View::make('addUser', ['name' => 'Munna']);
+    // return View::first(['addUser', 'name'], $data);
+    if (View::exists('addUser')) {
+
+        return View::make('addUser');
+    }
 });
 
 Route::post('/store/{id}', [UserController::class, 'store'])->name('store');

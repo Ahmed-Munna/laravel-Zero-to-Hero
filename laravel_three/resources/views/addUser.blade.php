@@ -14,5 +14,7 @@
   <input type="submit" value="Submit">
 </form> 
 
+{{$name}}
+
 </body>
 </html>
