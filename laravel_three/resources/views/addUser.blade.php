@@ -15,6 +15,35 @@
 </form> 
 
 {{$name}}
+@unless (Auth::check())
+    You are not signed in.
+@endunless
+<br>
+<br>
+<ul>
+  @foreach($users as $user)
+    @if ($loop->first)
+     <li>{{$user->name}}</li>
+    @endif
+
+    @if ($loop->last)
+     <li>{{$user->name}}</li>
+    @endif
+    
+  @endforeach
+</ul>
+
+<ul>
+  @foreach ($users as $user) 
+    <li>{{$loop->iteration}}</li>
+  @endforeach
+</ul>
+<input type="checkbox"
+        name="active"
+        value="active"
+        @checked(old('active', 1)) />
+
+ 
 
 </body>
 </html>
