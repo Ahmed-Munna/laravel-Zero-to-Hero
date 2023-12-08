@@ -19,5 +19,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/simple/{id}', SimpleController::class);
-Route::resource('photo', PhotoController::class);
+Route::view('/register', 'auth.register');
