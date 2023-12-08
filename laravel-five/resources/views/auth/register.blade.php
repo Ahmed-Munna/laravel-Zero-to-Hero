@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-@include("header")
+@include("auth.header")
 
 <body>
     <div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
@@ -85,7 +85,7 @@
         </div>
     </div>
 
-  @include("footer")
+  @include("auth.footer")
 
 </body>
 
