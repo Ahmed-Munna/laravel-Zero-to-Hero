@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class PhotoController extends Controller
@@ -67,5 +68,10 @@ class PhotoController extends Controller
     {
         //
         return $id;
+    }
+
+    public function test(Request $request):JsonResponse {
+
+        return response()->json(['Name' => 'Ahmed Munna'], 201);
     }
 }
