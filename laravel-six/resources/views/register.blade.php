@@ -68,7 +68,7 @@
                         <div class="row row-space">
                             <div class="col-12">
                                 <div class="input-group">
-                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                    <input class="form-check-input" type="checkbox" value="1" id="defaultCheck1" name="remember">
                                     <label class="form-check-label" for="defaultCheck1">
                                         Default checkbox
                                     </label>
