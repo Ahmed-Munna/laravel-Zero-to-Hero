@@ -23,7 +23,7 @@ Route::view('/register', 'register')->name('register');
     
 Route::post('/registration', [RegisterController::class, 'register'])->name('admin-register')->middleware(['haveAdmin', 'web']);
 
-Route::controller(EmailVarificationController::class)->group(function() {
-    Route::
-});
+// Route::controller(EmailVarificationController::class)->group(function() {
+//     Route::
+// });
 // Route::view('dashboard', 'dashboard')->name('dashboard');
