@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\FirstController;
+use App\Http\Controllers\SingleAction;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,4 +19,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::post('/first', [FirstController::class, 'GetInfo'])->name('getInfo');
+Route::post('/first', [FirstController::class, 'GetInfo'])->middleware('throttle:3,1')->name('getInfo');
+Route::post('/single', SingleAction::class)->name('single');
