@@ -50,4 +50,10 @@ class ProductController extends Controller
 
         return $products;
     }
+
+    public function getPage() {
+        $page = DB::table('products')
+                    ->paginate(5);
+        return $page;
+    }
 }

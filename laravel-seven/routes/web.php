@@ -27,3 +27,4 @@ Route::get('/product', [ProductController::class, 'getAllProduct']);
 Route::get('/common', [ProductController::class, 'getCommonProduct']);
 Route::get('/advance', [ProductController::class, 'getAdvanceProduct']);
 Route::get('/group', [ProductController::class, 'getGroupProduct']);
+Route::get('/page', [ProductController::class, 'getPage']);
