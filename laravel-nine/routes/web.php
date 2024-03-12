@@ -15,3 +15,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::post('/create-user', [UserController::class, 'UserRegistration']);
+Route::post('/login-user', [UserController::class, 'UserLogin']);
+Route::post('/send-OTP', [UserController::class, 'SendOTP']);
+Route::post('/verify-OTP', [UserController::class, 'VerifyOTP']);
