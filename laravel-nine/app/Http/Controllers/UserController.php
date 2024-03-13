@@ -152,5 +152,30 @@ class UserController extends Controller
 
         
     }
+
+    public function ResetPassword(Request $request) {
+
+        try {
+
+            $email = $request->header('email');
+            $password = $request->input('password');
+
+            User::where('email', '=', $email)
+                ->update(['password' => $password]);
+
+            return response()->json([
+                    'status' => 'success',
+                    'message' => 'password Update successfull'
+                ]);
+        } catch (Exception $ex) {
+            
+            Log::alert("User createion error " . $ex->getMessage());
+
+            return response()->json([
+                'status' => 'faild',
+                'message' => 'createion error'
+            ],401);
+        }
+    }
 }
 

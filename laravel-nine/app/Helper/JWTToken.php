@@ -4,6 +4,8 @@ namespace App\Helper;
 
 use Exception;
 use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
+use Illuminate\Support\Facades\Log;
 
 class JWTToken {
 
@@ -29,8 +31,9 @@ class JWTToken {
             $decode = JWT::decode($token, new Key($key, 'HS256'));
             return $decode->userEmail;
 
-        } catch(Exception $e) {
+        } catch(Exception $ex) {
 
+            Log::alert("User createion error " . $ex->getMessage());
             return 'unauthorized';
         }
 
