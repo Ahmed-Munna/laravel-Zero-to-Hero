@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CheckServiceController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,3 +34,9 @@ Route::get('/admin-profile', [AdminController::class, 'AdminProfile'])->middlewa
 
 
 Route::view('/login', 'login')->name('login');
+
+
+// test toute
+
+Route::post('/withoutId', [CheckServiceController::class, 'CheckAllUsers']);
+Route::post('/withId', [CheckServiceController::class, 'CheckSpasificUsers']);
