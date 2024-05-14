@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +36,7 @@ Route::get('/language/{lang}', function ($lang) {
 Route::get('/user', function () {
 
     $response = Http::get('https://jsonplaceholder.typicode.com/todos/1');
+    Storage::disk('local')->put('Users/todos.json', $response->body());
 
     // dd($response->json());
     return $response->status();
