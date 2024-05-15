@@ -1,6 +1,10 @@
 <?php
 
 use App\Http\Controllers\UserController;
+use App\Models\Comment;
+use App\Models\Post;
+use App\Models\Profile;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Http;
@@ -35,9 +39,20 @@ Route::get('/language/{lang}', function ($lang) {
 
 Route::get('/user', function () {
 
-    $response = Http::get('https://jsonplaceholder.typicode.com/todos/1');
-    Storage::disk('local')->put('Users/todos.json', $response->body());
+    // $response = Http::get('https://jsonplaceholder.typicode.com/todos/1');
+    // Storage::disk('local')->put('Users/todos.json', $response->body());
 
-    // dd($response->json());
-    return $response->status();
+    // // dd($response->json());
+    // return $response->status();
+
+    //$data = Post::with('latestComment')->get();
+
+    //$data = Comment::find(4);
+
+    $data = Profile::where('user_id', 1)->with('postsOnProfile')->get(); 
+
+    return $data;
+
+
+
 })->name('user');
