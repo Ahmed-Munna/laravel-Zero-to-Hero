@@ -12,6 +12,6 @@ class Profile extends Model
 
     public function postsOnProfile() {
 
-        return $this->hasOneThrough(Post::class, User::class);
+        return $this->hasOneThrough(Post::class, User::class, 'id', 'user_id', 'id', 'id');
     }
 }
