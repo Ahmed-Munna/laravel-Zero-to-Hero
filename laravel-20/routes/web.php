@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,9 +15,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('Auth.sign-in');
-})->name('sign-in');
+    return view('welcome');
+});
 
-Route::get('/sign-up', function () {
-    return view('Auth.sign-up');
-})->name('sign-up');
+Route::view('/login', 'Auth.sign-in')->name('login')->middleware('isLogedIn');
+Route::view('/register', 'Auth.sign-up')->name('register')->middleware('isLogedIn');
+Route::view('/dashboard', 'dashboard')->name('dashboard')->middleware('auth');
+
+Route::post('/login-user', [UserController::class, 'login'])->name('login-user');
+Route::post('/register-user', [UserController::class, 'registerUser'])->name('register-user');
+Route::get('/logout', [UserController::class, 'logout'])->name('logout')->middleware('auth');

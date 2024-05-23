@@ -9,7 +9,7 @@
 <body>
   <div class="wrapper">
     <h2>Registration</h2>
-    <form action="post">
+    <form action="{{ route('register-user') }}" method="POST">
         @csrf
       <div class="input-box">
         <input type="text" name="name" placeholder="Enter your name" required>
@@ -24,11 +24,16 @@
         <input type="checkbox" name="policy"">
         <h3>I accept all terms & condition</h3>
       </div>
+      @if ($errors->any())
+      <div class="input-box">
+        <span style="color: red;">{{ $errors->first() }}</span>
+      </div>
+      @endif
       <div class="input-box button">
         <input type="Submit" name="submit" value="Register Now">
       </div>
       <div class="text">
-        <h3>Already have an account? <a href="{{ route('sign-in') }}">Login now</a></h3>
+        <h3>Already have an account? <a href="{{ route('login') }}">Login now</a></h3>
       </div>
     </form>
   </div>
