@@ -30,10 +30,10 @@ Route::get('/logout', [UserController::class, 'logout'])->name('logout')->middle
 
 // Admin Routes
 
-Route::view('/admin-login', 'Admin.sign-in')->name('admin-login');
-Route::view('/admin-register', 'Admin.sign-up')->name('admin-register');
+Route::view('/admin-login', 'Admin.sign-in')->name('admin-login')->middleware('IsAdminLogedIn');
+Route::view('/admin-register', 'Admin.sign-up')->name('admin-register')->middleware('IsAdminLogedIn');
 Route::view('/admin-dashboard', 'Admin.dashboard')->name('admin-dashboard')->middleware('auth:admin');
 
 Route::post('/login-admin', [AdminController::class, 'login'])->name('login-admin');
 Route::post('/register-admin', [AdminController::class, 'registerUser'])->name('register-admin');
-//Route::get('/logout-admin', [AdminController::class, 'logout'])->name('logout')->middleware('auth');
+Route::get('/logout-admin', [AdminController::class, 'logout'])->name('logout-admin')->middleware('auth:admin');

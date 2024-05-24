@@ -22,7 +22,7 @@ class AdminController extends Controller
             'password' => $request->password
         ]);
 
-        auth()->login($data);
+        auth()->guard('admin')->login($data);
 
         return redirect()->route('admin-dashboard');
     } 
@@ -35,7 +35,7 @@ class AdminController extends Controller
 
         $remember = $request->has('remember') ? true : false;
 
-        if (auth()->attempt([
+        if (auth()->guard('admin')->attempt([
             'email' => $request->email, 
             'password' => $request->password
         ], $remember)) {
@@ -47,7 +47,7 @@ class AdminController extends Controller
     }
 
     public function logout() {
-        auth()->logout();
+        auth()->guard('admin')->logout();
         return redirect()->route('home');
     }
 }
