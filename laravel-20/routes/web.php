@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -37,3 +38,9 @@ Route::view('/admin-dashboard', 'Admin.dashboard')->name('admin-dashboard')->mid
 Route::post('/login-admin', [AdminController::class, 'login'])->name('login-admin');
 Route::post('/register-admin', [AdminController::class, 'registerUser'])->name('register-admin');
 Route::get('/logout-admin', [AdminController::class, 'logout'])->name('logout-admin')->middleware('auth:admin');
+
+// Posts Routes
+
+Route::get('/posts', [PostController::class, 'showPosts'])->name('posts');
+Route::get('/post/{id}', [PostController::class, 'showSinglePosts'])->name('posts-view');
+Route::post('/create-post', [PostController::class, 'createPost'])->name('create-post');
