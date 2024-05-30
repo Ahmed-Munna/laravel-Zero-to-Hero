@@ -5,14 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Gate;
 class PostController extends Controller
 {
 
-    public function showPosts() {
-        
+    public function showPosts(Post $post) {
+       
+        return Gate::allows('show_post', $post)? 'True' : 'False';
 
-        $posts = Post::with('user')->get();
         
         return view('posts', compact('posts'));
     }

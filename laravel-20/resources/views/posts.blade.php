@@ -36,7 +36,7 @@
                         <tr>
                             <td>{{ $post->title }}</td>
                             <td>{{ $post->user->name }}</td>
-                            <td><a href="{{ route('posts-view', $post->id) }}">Edit</a></td>
+                            <td><a href="{{ route('posts-view', $post->id) }}">View</a></td>
                         </tr>
                    @endforeach
                     <tbody>
