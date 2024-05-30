@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-
+use Illuminate\Auth\Events\Registered;
 class AuthController extends Controller
 {
     public function registerUser(Request $request) {
 
-        $request->validate([
+        $user = $request->validate([
             'name' => 'required|max:255',
             'email' => 'required|email|max:255',
             'password' => 'required|min:6|max:255'
@@ -21,6 +21,7 @@ class AuthController extends Controller
             'password' => $request->password
         ]);
 
+        event(new Registered($user));
         auth()->login($data);
 
         return redirect()->route('dashboard');

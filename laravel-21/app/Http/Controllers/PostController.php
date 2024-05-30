@@ -14,7 +14,7 @@ class PostController extends Controller
      */
     public function __invoke(Request $request)
     {   
-       $this->authorize('adminOrUser');
+       $this->authorize('create');
         
         Post::create([
             'title' => "Amar Sonar Bangla " . rand(1, 100),
